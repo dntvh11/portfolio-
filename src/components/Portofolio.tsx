@@ -13,7 +13,7 @@ import CardProject from "./CardProject";
 import TechStackIcon from "./TechStackIcon";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Certificate from "./Certificate";
+import Course from "./Course";
 import { Code, Award, Boxes } from "lucide-react";
 import { PortofolioProps } from "~/types/types";
 
@@ -124,13 +124,52 @@ const techStacks = [
   { icon: "vite.svg", language: "Vite" },
 ];
 
+// Static courses data
+const courses = [
+  {
+    id: 1,
+    image: "nextjs.jpg",
+    title: "Mastering Next.js",
+    description: "Học Next.js từ cơ bản đến nâng cao, tối ưu SEO và xây dựng ứng dụng full-stack."
+  },
+  {
+    id: 2,
+    image: "aws.jpg", 
+    title: "AWS Cloud Mastery",
+    description: "Triển khai, quản lý và tối ưu hệ thống trên Amazon Web Services."
+  },
+  {
+    id: 3,
+    image: "nestjs.jpg",
+    title: "NestJS Backend Pro",
+    description: "Xây dựng API mạnh mẽ, bảo mật và hiệu suất cao với NestJS."
+  },
+  {
+    id: 4,
+    image: "digital.jpg",
+    title: "Digital Product Launch",
+    description: "Chiến lược xây dựng, tiếp thị và bán sản phẩm số thành công."
+  },
+  {
+    id: 5,
+    image: "ai.jpg",
+    title: "AI in Everyday Life",
+    description: "Ứng dụng trí tuệ nhân tạo để tối ưu công việc và cuộc sống."
+  },
+  {
+    id: 6,
+    image: "crypto.jpg",
+    title: "On-Chain Crypto Analysis",
+    description: "Phân tích dữ liệu blockchain để phát hiện xu hướng và cơ hội đầu tư."
+  }
+];
+
 const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const [projects, setProjects] = useState([]);
-  const [certificates, setCertificates] = useState([]);
   const [showAllProjects, setShowAllProjects] = useState(false);
-  const [showAllCertificates, setShowAllCertificates] = useState(false);
+  const [showAllCourses, setShowAllCourses] = useState(false);
   const isMobile = window.innerWidth < 768;
   const initialItems = isMobile ? 4 : 6;
 
@@ -144,12 +183,8 @@ const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
   const fetchData = useCallback(async () => {
     try {
       const projectCollection = collection(db, "projects");
-      const certificateCollection = collection(db, "certificates");
 
-      const [projectSnapshot, certificateSnapshot] = await Promise.all([
-        getDocs(projectCollection),
-        getDocs(certificateCollection),
-      ]);
+      const projectSnapshot = await getDocs(projectCollection);
 
       const projectData = projectSnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -157,14 +192,10 @@ const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
         TechStack: doc.data().TechStack || [],
       }));
 
-      const certificateData = certificateSnapshot.docs.map((doc) => doc.data());
-
       setProjects(projectData);
-      setCertificates(certificateData);
 
       // Store in localStorage
       localStorage.setItem("projects", JSON.stringify(projectData));
-      localStorage.setItem("certificates", JSON.stringify(certificateData));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -178,20 +209,20 @@ const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
     setValue(newValue);
   };
 
-  const toggleShowMore = useCallback((type) => {
+  const toggleShowMore = useCallback((type: string) => {
     if (type === "projects") {
       setShowAllProjects((prev) => !prev);
     } else {
-      setShowAllCertificates((prev) => !prev);
+      setShowAllCourses((prev) => !prev);
     }
   }, []);
 
   const displayedProjects = showAllProjects
     ? projects
     : projects.slice(0, initialItems);
-  const displayedCertificates = showAllCertificates
-    ? certificates
-    : certificates.slice(0, initialItems);
+  const displayedCourses = showAllCourses
+    ? courses
+    : courses.slice(0, initialItems);
 
   return (
     <div
@@ -309,7 +340,7 @@ const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
               icon={
                 <Award className="mb-2 w-5 h-5 transition-all duration-300" />
               }
-              label="Certificates"
+              label="Courses"
               {...a11yProps(1)}
             />
             <Tab
@@ -371,10 +402,10 @@ const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
 
           <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-3 md:gap-5 gap-4">
-                {displayedCertificates.map((certificate, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {displayedCourses.map((course, index) => (
                   <div
-                    key={index}
+                    key={course.id}
                     data-aos={
                       index % 3 === 0
                         ? "fade-up-right"
@@ -390,16 +421,20 @@ const Portofolio: React.FC<PortofolioProps> = ({ innerRef }) => {
                         : "1000"
                     }
                   >
-                    <Certificate ImgSertif={certificate.Img} />
+                    <Course 
+                      image={course.image}
+                      title={course.title}
+                      description={course.description}
+                    />
                   </div>
                 ))}
               </div>
             </div>
-            {certificates.length > initialItems && (
+            {courses.length > initialItems && (
               <div className="mt-6 w-full flex justify-start">
                 <ToggleButton
-                  onClick={() => toggleShowMore("certificates")}
-                  isShowingMore={showAllCertificates}
+                  onClick={() => toggleShowMore("courses")}
+                  isShowingMore={showAllCourses}
                 />
               </div>
             )}

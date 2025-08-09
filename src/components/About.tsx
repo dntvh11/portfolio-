@@ -132,7 +132,7 @@ const AboutPage: React.FC<AboutProps> = ({ innerRef }) => {
       localStorage.getItem("certificates") || "[]"
     );
 
-    const startDate = new Date("2021-11-06");
+    const startDate = new Date("2020-11-06");
     const today = new Date();
     const experience =
       today.getFullYear() -
@@ -188,7 +188,7 @@ const AboutPage: React.FC<AboutProps> = ({ innerRef }) => {
         icon: Award,
         color: "from-[#a855f7] to-[#6366f1]",
         value: totalCertificates,
-        label: "Certificates",
+        label: "Courses",
         description: "Professional skills validated",
         animation: "fade-up",
       },
