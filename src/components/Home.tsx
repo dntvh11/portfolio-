@@ -216,77 +216,106 @@ const Home: React.FC<HomeProps> = ({ innerRef }) => {
               >
                 {/* Main Description */}
                 <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/10 shadow-2xl">
-                  <p className="text-sm md:text-base lg:text-lg font-medium text-gray-200 mb-4 leading-relaxed">
+                  <p className="text-sm md:text-base lg:text-lg font-medium text-gray-200 mb-4 leading-relaxed vietnamese-text">
                     Lập trình viên full-stack chuyên về JavaScript (Node.js, React.js, NestJS, Next.js) và thành thạo Python.
                   </p>
                   
-                  <p className="text-xs md:text-sm text-gray-400 mb-4">
+                  <p className="text-xs md:text-sm text-gray-400 mb-4 vietnamese-text">
                     Tập trung phát triển các giải pháp công nghệ và ứng dụng thực tiễn:
                   </p>
 
                   {/* Services Grid */}
                   <div className="space-y-3">
-                    <div className="grid grid-cols-1 gap-2 text-xs md:text-sm">
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#6366f1] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Tool tự động hóa:</strong> 
-                          <span className="text-gray-400"> bot Telegram, Discord, crawler dữ liệu, tool trading</span>
-                        </span>
-                      </div>
-                                      
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#6366f1] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Web development:</strong> 
-                          <span className="text-gray-400"> landing pages, web apps, data management systems</span>
-                        </span>
-                      </div>
-                      
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs md:text-sm">
+                      {/* Left Column */}
+                      <div className="space-y-2">
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#6366f1] text-base">•</span>
+                          <span className="text-gray-300 vietnamese-text">
+                            <strong className="text-white">Tool tự động hóa:</strong> 
+                            <span className="text-gray-400"> bot Telegram, Discord, crawler dữ liệu, tool trading</span>
+                          </span>
+                        </div>
+                                        
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#6366f1] text-base">•</span>
+                          <span className="text-gray-300">
+                            <strong className="text-white">Web development:</strong> 
+                            <span className="text-gray-400"> landing pages, web apps, data management systems</span>
+                          </span>
+                        </div>
 
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#a855f7] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Dạy học lập trình:</strong>
-                          <span className="text-gray-400"> đào tạo từ cơ bản đến nâng cao, mentor dự án thực tế</span>
-                        </span>
-                      </div>
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#a855f7] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Cloud & DevOps:</strong> 
-                          <span className="text-gray-400"> AWS, Vercel, Docker, CI/CD pipelines</span>
-                        </span>
-                      </div>
-                      
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#6366f1] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Data & AI:</strong> 
-                          <span className="text-gray-400"> analytics, AI chatbots, automated reporting</span>
-                        </span>
-                      </div>
-                      
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#a855f7] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Discord system:</strong>
-                          <span className="text-gray-400"> setup, bot development, role management</span>
-                        </span>
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#6366f1] text-base">•</span>
+                          <span className="text-gray-300">
+                            <strong className="text-white">Cloud & DevOps:</strong> 
+                            <span className="text-gray-400"> AWS, Vercel, Docker, CI/CD pipelines</span>
+                          </span>
+                        </div>
+                        
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#6366f1] text-base">•</span>
+                          <span className="text-gray-300">
+                            <strong className="text-white">Data & AI:</strong> 
+                            <span className="text-gray-400"> analytics, AI chatbots, automated reporting</span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#6366f1] text-base">•</span>
+                          <span className="text-gray-300 vietnamese-text">
+                            <strong className="text-white">Automation & Finance:</strong> 
+                            <span className="text-gray-400"> n8n workflows, financial analysis tools</span>
+                          </span>
+                        </div>
                       </div>
 
+                      {/* Right Column */}
+                      <div className="space-y-2">
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#a855f7] text-base">•</span>
+                          <span className="text-gray-300 vietnamese-text">
+                            <strong className="text-white">Dạy học lập trình:</strong>
+                            <span className="text-gray-400"> đào tạo từ cơ bản đến nâng cao, mentor dự án thực tế</span>
+                          </span>
+                        </div>
 
-                      <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
-                        <span className="text-[#a855f7] text-base">•</span>
-                        <span className="text-gray-300">
-                          <strong className="text-white">Automation & Finance:</strong> 
-                          <span className="text-gray-400"> n8n workflows, financial analysis tools</span>
-                        </span>
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#a855f7] text-base">•</span>
+                          <span className="text-gray-300">
+                            <strong className="text-white">Discord system:</strong>
+                            <span className="text-gray-400"> setup, bot development, role management</span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#a855f7] text-base">•</span>
+                          <span className="text-gray-300 vietnamese-text">
+                            <strong className="text-white">MMO & Digital Products:</strong> 
+                            <span className="text-gray-400"> airdrop, kiếm tiền online, digital product automation</span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#a855f7] text-base">•</span>
+                          <span className="text-gray-300 vietnamese-text">
+                            <strong className="text-white">AI Integration Training:</strong> 
+                            <span className="text-gray-400"> áp dụng AI vào công việc hàng ngày, tối ưu quy trình</span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-start space-x-2 group hover:bg-white/5 rounded-lg p-2 transition-all">
+                          <span className="text-[#a855f7] text-base">•</span>
+                          <span className="text-gray-300">
+                            <strong className="text-white">Consulting & Strategy:</strong> 
+                            <span className="text-gray-400"> business automation, tech solutions, growth hacking</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
 
                     <div className="mt-4 pt-4 border-t border-gray-700/30">
-                      <p className="text-center text-xs md:text-sm text-gray-300 italic">
+                      <p className="text-center text-xs md:text-sm text-gray-300 italic vietnamese-text">
                         Phương châm: <span className="text-[#6366f1] font-medium">Tối ưu thời gian</span> • 
                         <span className="text-[#a855f7] font-medium"> Tối đa hiệu quả</span> • 
                         <span className="text-[#6366f1] font-medium"> Giảm chi phí</span>
